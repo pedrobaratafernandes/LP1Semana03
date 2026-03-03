@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace RightSize
 {
@@ -6,7 +7,19 @@ namespace RightSize
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine("Hello LP!");
+            foreach (string arg in args)
+            {
+                if (arg.Length >= 8)
+                {
+                    Console.WriteLine("[EARLY STOP]");
+                    break;
+                }
+                if (arg.Length > 3)
+                {
+                    Console.WriteLine(arg);
+                }
+
+            }
         }
     }
 }
