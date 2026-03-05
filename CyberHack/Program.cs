@@ -32,50 +32,29 @@ namespace CyberHack
 
 
 
-            if (hacktools == "Phishing")
-            {
-                hackTool |= HackTool.Phishing;
-
-
-            }
-            else if (hacktools == "Backdoor")
-            {
-                hackTool |= HackTool.Backdoor;
-            }
-            else if (hacktools == "BruteForce")
-            {
-                hackTool |= HackTool.BruteForce;
-            }
-
-            else if (hacktools == "ZeroDay")
-            {
-                hackTool |= HackTool.ZeroDay;
-            }
-            else if (hacktools == "AIOverride")
-            {
-                hackTool |= HackTool.AIOverride;
-            }
-            else if (hacktools == "QuantumExploit")
-            {
-                hackTool |= HackTool.QuantumExploit;
-            }
-
 
             if ((systemType & (SystemType.CorporateServer)) == (SystemType.CorporateServer))
             {
 
-                if ((hackTool & (HackTool.Phishing & HackTool.Backdoor)) == (HackTool.ZeroDay & HackTool.BruteForce))
+                if (
+                    hacktools == "Phishing Backdoor BruteForce ZeroDay" ||
+                 hacktools == "Phishing Backdoor BruteForce" ||
+                 hacktools == "Phishing Backdoor ZeroDay" ||
+                  hacktools == "Backdoor BruteForce" ||
+                  hacktools == "Backdoor ZeroDay" ||
+                  hacktools == "Phishing ZeroDay" ||
+                   hacktools == "Phishing BruteForce")
                 {
-                    Console.WriteLine("System Hacked!");
-                }
-                else
-                {
-                    Console.WriteLine("System Secure");
-                }
-            } else if ((systemType & (SystemType.BankDatabase)) == (SystemType.BankDatabase))
-            {
+                    hackTool |= HackTool.Phishing;
+                    hackTool |= HackTool.Backdoor;
+                    hackTool |= HackTool.BruteForce;
+                    hackTool |= HackTool.ZeroDay;
 
-                if ((hackTool & (HackTool.ZeroDay & HackTool.Backdoor)) == (HackTool.ZeroDay & HackTool.BruteForce))
+                }
+
+
+
+                if ((hackTool & (HackTool.Phishing | HackTool.Backdoor & HackTool.ZeroDay | HackTool.BruteForce)) != 0)
                 {
                     Console.WriteLine("System Hacked!");
                 }
@@ -84,6 +63,7 @@ namespace CyberHack
                     Console.WriteLine("System Secure");
                 }
             }
+
 
 
 
