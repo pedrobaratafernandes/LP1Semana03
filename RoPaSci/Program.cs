@@ -5,9 +5,25 @@ namespace RoPaSci
 {
     public class Program
     {
+
+        GameStatus draw = Enum.Parse<GameStatus>("Draw");
+        GameStatus player1Win = Enum.Parse<GameStatus>("Player1Wins");
+        GameStatus player2Win = Enum.Parse<GameStatus>("Player2Wins");
+
+        GameItem rock = Enum.Parse<GameItem>("Rock");
+        GameItem scissors = Enum.Parse<GameItem>("Scissors");
+
+        GameItem paper = Enum.Parse<GameItem>("Paper");
+
         private static void Main(string[] args)
         {
-            int result = RockPaperScissors(args[0], args[1]);
+
+
+
+            int result = (int)RockPaperScissors(GameItem.Rock, GameItem.Paper);
+
+
+
             switch (result)
             {
                 case 0:
@@ -22,22 +38,26 @@ namespace RoPaSci
             }
         }
 
-        private static int RockPaperScissors(string player1, string player2)
+
+
+        private static GameStatus RockPaperScissors(GameItem player1, GameItem player2)
         {
-            int status;
+
+            GameStatus status;
+            
             if (player1 == player2)
             {
-                status = 0; // Draw
+                status = GameStatus.Draw; // Draw
             }
-            if (((player1 == "Rock") && (player2 == "Scissors")) ||
-                ((player1 == "Scissors") && (player2 == "Paper")) ||
-                ((player1 == "Paper") && (player2 == "Rock")))
+            if (((player1 == GameItem.Rock) && (player2 == GameItem.Scissors)) ||
+                ((player1 == GameItem.Scissors) && (player2 == GameItem.Paper)) ||
+                ((player1 == GameItem.Paper) && (player2 == GameItem.Rock)))
             {
-                status = 1; // Player 1 wins
+                status = GameStatus.Player1Wins; // Player 1 wins
             }
             else
             {
-                status = 2; // Player 2 wins
+                status = GameStatus.Player2wins; // Player 2 wins
             }
             return status;
         }
