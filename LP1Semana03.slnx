@@ -1,6 +1,7 @@
 <Solution>
   <Project Path="ArrayMul/ArrayMul.csproj" />
   <Project Path="ChangeString/ChangeString.csproj" />
+  <Project Path="CyberHack/CyberHack.csproj" />
   <Project Path="FamousQuotes/FamousQuotes.csproj" />
   <Project Path="HeroPerk/HeroPerk.csproj" />
   <Project Path="Pow2Until/Pow2Until.csproj" />
