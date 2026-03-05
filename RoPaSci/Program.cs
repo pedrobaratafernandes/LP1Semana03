@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 
 namespace RoPaSci
 {
@@ -23,20 +24,22 @@ namespace RoPaSci
 
         private static int RockPaperScissors(string player1, string player2)
         {
+            int status;
             if (player1 == player2)
             {
-                return 0; // Draw
+                status = 0; // Draw
             }
             if (((player1 == "Rock") && (player2 == "Scissors")) ||
                 ((player1 == "Scissors") && (player2 == "Paper")) ||
                 ((player1 == "Paper") && (player2 == "Rock")))
             {
-                return 1; // Player 1 wins
+                status = 1; // Player 1 wins
             }
             else
             {
-                return 2; // Player 2 wins
+                status = 2; // Player 2 wins
             }
+            return status;
         }
     }
 }
